@@ -5,8 +5,6 @@ from flask import Blueprint, send_file
 download_bp = Blueprint(
     "download_bp",
     __name__,
-    template_folder="../../templates",
-    static_folder="../../static",
 )
 
 
