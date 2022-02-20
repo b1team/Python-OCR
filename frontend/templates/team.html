@@ -1,0 +1,28 @@
+
+{% include "components/header.html" %}
+{% include "components/start_container.html" %}
+{% include "components/menu.html" %}
+<div class="row">
+<section class="team-clean">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Thành viên thực hiện</h2>
+        </div>
+        <div class="row justify-content-center people">
+            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="{{ url_for('static', filename='img/vuonglv.jpg') }}">
+                <h3 class="name">vuonglv</h3>
+                <p class="title">FULLSTACK DEVELOPER</p>
+                <div class="social"><a href="#"></a><a href="#"></a><a href="#"></a></div>
+            </div>
+            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="{{ url_for('static', filename='img/tungnt.jpg') }}">
+                <h3 class="name">tungnt</h3>
+                <p class="title">Backend Developer</p>
+                <p class="description"></p>
+                <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include "components/footer.html" %}
+{% include "components/end_container.html" %}
+{% include "components/js_files.html" %}

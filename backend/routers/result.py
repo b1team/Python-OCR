@@ -3,21 +3,27 @@ from flask import Blueprint, render_template, session
 result_bp = Blueprint(
     "result_bp",
     __name__,
-    template_folder="../../templates",
-    static_folder="../../static",
 )
 
 
-@result_bp.route("/result")
+@result_bp.route("/result", methods=["GET"])
 def result():
+    # data = session["data"]
+    return render_template(
+        "convert.html",
+        title="Result",
+        # time=data["time"],
+        # text=data["text"],
+        # words=len(data["text"].split(" ")),
+    )
     if "data" in session:
         data = session["data"]
         return render_template(
-            "result.html",
+            "convert.html",
             title="Result",
             time=data["time"],
             text=data["text"],
             words=len(data["text"].split(" ")),
         )
     else:
-        return "Wrong request method."
+        return "Bad request", 400

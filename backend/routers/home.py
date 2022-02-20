@@ -4,11 +4,9 @@ from flask import Blueprint, render_template
 home_bp = Blueprint(
     "home_bp",
     __name__,
-    template_folder="../../templates",
-    static_folder="../../static",
 )
 
 
 @home_bp.route("/")
 def home():
-    return render_template("index.html", title="Image Reader")
+    return render_template("index.html", title="Chuyển ảnh thành văn bản", submit_localtion="/scanner")
