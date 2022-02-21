@@ -23,3 +23,23 @@ function showFilePath(input){
         img.src = URL.createObjectURL(input.files[0]);
   }
 }
+
+function qrButtonClick(){
+  qr_image.setAttribute("src", "/qr");
+}
+
+function txtOnchange(input){
+  // call api endpoint update
+  url = "http://127.0.0.1:8080/update-text";
+  // fetch post
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      text: input.value
+    })
+  })
+
+}

@@ -10,3 +10,5 @@ class Config:
     debug = env.bool("DEBUG", False)
     secret_key = env.str("SECRET_KEY", "secret_key")
     qrcode_folder = env.str("QRCODE_FOLDER", "qrcode")
+    image_folder = env.str("IMAGE_FOLDER", "images")
+    txt_folder = env.str("TXT_FOLDER", "text")

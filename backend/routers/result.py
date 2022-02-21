@@ -8,22 +8,14 @@ result_bp = Blueprint(
 
 @result_bp.route("/result", methods=["GET"])
 def result():
-    # data = session["data"]
-    return render_template(
-        "convert.html",
-        title="Result",
-        # time=data["time"],
-        # text=data["text"],
-        # words=len(data["text"].split(" ")),
-    )
+    data = session["data"]
     if "data" in session:
         data = session["data"]
         return render_template(
             "convert.html",
             title="Result",
-            time=data["time"],
-            text=data["text"],
-            words=len(data["text"].split(" ")),
+            session_id=data["session_id"],
+            text=data["text"]
         )
     else:
         return "Bad request", 400

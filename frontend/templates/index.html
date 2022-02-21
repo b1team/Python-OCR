@@ -9,7 +9,7 @@
                     <div class="col" style="border-radius: 10px;padding-bottom: 20px;padding-top: 20px;padding-right: 20px;padding-left: 20px;border: 2px dashed var(--bs-gray-100) ;"><i class="fa fa-cloud-upload d-xl-flex justify-content-xl-center align-items-xl-center" style="font-size: 120px;margin-right: auto;"></i>
                         <p class="d-xl-flex justify-content-xl-center" style="font-size: 26px;font-family: 'Roboto Condensed', sans-serif;">Tải ảnh lên</p>
                         <div class="d-none text-center">
-                            <form id="uploadFileForm" method="POST" location="{{ submit_localtion }}" enctype="multipart/form-data"><input class="form-control form-control-lg d-none d-xl-flex" type="file" id="uploadFileInput" name="uploadFile" accept="image/*" required="" onchange="showFilePath(this)"></form>
+                            <form id="uploadFileForm" method="POST" action="{{ submit_localtion }}" enctype="multipart/form-data"><input class="form-control form-control-lg d-none d-xl-flex" type="file" id="uploadFileInput" name="uploadFile" accept="image/*" required="" onchange="showFilePath(this)"></form>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <h5 class="mb-0"><i class="fa fa-gear"></i>&nbsp;Các cài đặt tùy chọn</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">Ngôn ngữ gốc của tập tin của bạn<br> Để đạt được kết quả tốt nhất, hãy chọn ngôn ngữ có trong file của bạn.</p><select id="lang-selector" name="lang-selector" form="uploadFileForm">
+                <p class="card-text">Ngôn ngữ gốc của tập tin của bạn<br> Để đạt được kết quả tốt nhất, hãy chọn ngôn ngữ có trong file của bạn.</p><select id="lang-selector" name="lang" form="uploadFileForm">
                     <option value="vie" selected="">Tiếng Việt</option>
                     <option value="eng">Tiếng Anh</option>
                 </select>
