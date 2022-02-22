@@ -29,8 +29,10 @@ def scan_file():
     with open(file_name, "wb") as f:
         f.write(image_data)
     lang = request.form.get("lang", "vie")
+    unproject = bool(request.form.get("skew_checkbox", False))
+
     logger.info("Scanning file with language: %s", lang)
-    scanned_text = detect_file(image_data, lang)
+    scanned_text = detect_file(image_data, lang, unproject)
     scanned_text = scanned_text.replace('\x0c', '')
     session['text'] = scanned_text
     session["data"] = {

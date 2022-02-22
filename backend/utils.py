@@ -1,18 +1,28 @@
 import io
-import time
 import os
+import time
 
+import numpy
 import pytesseract
-from PIL import Image
-import requests
 import qrcode
+import requests
+from PIL import Image
+
+from .remove_shadow import remove_shadow as rs
+from .unproject import un_project
 
 
-def detect_file(file, lang):
-    scanned_text = pytesseract.image_to_string(
-        Image.open(io.BytesIO(file)), lang=lang
-    )
+def detect_file(file, lang, unproject=False, remove_shadow=False):
+    pil_image = Image.open(io.BytesIO(file))
+    open_cv_image = numpy.array(pil_image.convert("RGB"))
+    img = open_cv_image[:, :, ::-1].copy()
+    if unproject:
+        img = un_project(img)
+    if remove_shadow:
+        img = rs(img)
+    scanned_text = pytesseract.image_to_string(img, lang=lang)
     return scanned_text
+
 
 
 def download_file_from_url(url, file_name):
