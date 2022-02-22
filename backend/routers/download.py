@@ -15,6 +15,7 @@ def download_file():
         session_id = session["data"]["session_id"]
         txt_folder = Config.txt_folder
         file_name = f"{txt_folder}/text_{session_id}.txt"
+        text = text.replace('', '')
         with open(file_name, "w") as f:
             f.write(text)
         return send_file(file_name, as_attachment=True)

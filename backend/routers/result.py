@@ -8,6 +8,8 @@ result_bp = Blueprint(
 
 @result_bp.route("/result", methods=["GET"])
 def result():
+    if "data" not in session:
+        return render_template("403.html", error="No data in session")
     data = session["data"]
     if "data" in session:
         data = session["data"]

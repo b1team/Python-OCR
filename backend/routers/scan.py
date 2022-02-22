@@ -31,6 +31,7 @@ def scan_file():
     lang = request.form.get("lang", "vie")
     logger.info("Scanning file with language: %s", lang)
     scanned_text = detect_file(image_data, lang)
+    scanned_text = scanned_text.replace('\x0c', '')
     session['text'] = scanned_text
     session["data"] = {
         "text": scanned_text,

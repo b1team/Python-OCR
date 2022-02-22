@@ -15,6 +15,7 @@ qr_bp = Blueprint(
 def qrcode():
     if "text" in session:
         text = session["text"]
+        text = text.replace('', '')
         folder_name = create_folder(Config.qrcode_folder)
         qr_image = generate_qr(folder_name, text)
         return send_from_directory(os.path.abspath(folder_name), qr_image)
