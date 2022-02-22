@@ -10,7 +10,7 @@ from flask import (
 )
 import datetime
 
-from backend.utils import detect_file, detect_file_advanced
+from backend.utils import detect_file
 from backend.logger import logger
 from backend.setting import Config
 
@@ -29,13 +29,10 @@ def scan_file():
     with open(file_name, "wb") as f:
         f.write(image_data)
     lang = request.form.get("lang", "vie")
-    advanced = bool(request.form.get("advanced", True))
+    unproject = bool(request.form.get("skew_checkbox", False))
+
     logger.info("Scanning file with language: %s", lang)
-    if advanced:
-        scanned_text = detect_file(image_data, lang)
-        # scanned_text = detect_file_advanced(image_data, lang)
-    else:
-        scanned_text = detect_file(image_data, lang)
+    scanned_text = detect_file(image_data, lang, unproject)
     scanned_text = scanned_text.replace('\x0c', '')
     session['text'] = scanned_text
     session["data"] = {
