@@ -8,7 +8,6 @@ import qrcode
 import requests
 from PIL import Image
 
-from .remove_shadow import remove_shadow as rs
 from .unproject import un_project
 
 
@@ -19,14 +18,12 @@ def detect_file(file, lang):
     return scanned_text
 
 
-def detect_file_advanced(file, lang, unproject=False, remove_shadow=False):
+def detect_file_advanced(file, lang, unproject=False):
     pil_image = Image.open(io.BytesIO(file))
     open_cv_image = numpy.array(pil_image.convert("RGB"))
     img = open_cv_image[:, :, ::-1].copy()
     if unproject:
         img = un_project(img)
-    if remove_shadow:
-        img = rs(img)
     scanned_text = pytesseract.image_to_string(img, lang=lang)
     return scanned_text
 
